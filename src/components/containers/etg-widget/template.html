@@ -1,0 +1,40 @@
+<div class="widget">
+  <etg-form-element
+    label="Topic Keywords"
+  >
+    <etg-input
+      placeholder="Type your topic here"
+      value="{{form.keywords}}"
+    />
+  </etg-form-element>
+  <div class="widget__select">
+    <etg-form-element
+      label="Topic Type"
+    >
+      <etg-selector
+        data="[[subject]]"
+        value="{{form.type}}"
+      />
+    </etg-form-element>
+    <etg-form-element
+      label="Subject area"
+    >
+      <etg-selector
+        data="[[types]]"
+        value="{{form.subject}}"
+      />
+    </etg-form-element>
+  </div>
+  <template is="dom-if" if="[[!loading]]">
+    <etg-button
+      label="Generate!"
+      on-click="generateTopics"
+    />
+  </template>
+  <template is="dom-if" if="[[loading]]">
+    <img src="../../../assets/images/spinner.gif" alt="...Loading" />
+  </template>
+</div>
+<etg-topics
+  data="[[topics]]"
+/>

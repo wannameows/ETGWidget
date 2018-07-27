@@ -1,0 +1,17 @@
+---
+extends:
+  - stylelint-config-standard
+rules:
+  at-rule-empty-line-before: ~
+  at-rule-no-unknown: ~
+  color-hex-case: "lower"
+  max-empty-lines: 2
+  max-nesting-depth: 3
+  no-descending-specificity: ~
+  no-missing-end-of-source-newline: true
+  number-leading-zero: "never"
+  property-no-vendor-prefix: true
+  rule-empty-line-before: ~
+  selector-type-no-unknown: ~
+  string-quotes: single
+  block-no-empty: null

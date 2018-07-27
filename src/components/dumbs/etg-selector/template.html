@@ -1,0 +1,13 @@
+<div class="selector">
+  <select
+    value="{{value::change}}"
+  >
+    <template
+      is="dom-repeat"
+      items="[[data]]"
+      as="item"
+    >
+      <option value="[[item.title]]">[[item.title]]</option>
+    </template>
+  </select>
+</div>
