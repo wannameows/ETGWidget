@@ -59,9 +59,25 @@ export default class ETGWidget extends ETGElement {
     this.api.get('data').then(({ subject, types }) => {
       subject.unshift({ id: 0, title: 'All' });
       types.unshift({ id: 0, title: 'All' });
+      let form = { ...this.form };
+      let params = this.getLocationParams();
+      if (params) {
+        if (params.keywords) {
+          form.keywords = params.keywords;
+        }
+        if (params.type && types.find(elem => elem.title === params.type)) {
+          types = types.sort(a => a.title === params.type ? -1 : 1);
+          form.type = types[0].title;
+        }
+        if (params.subject && subject.find(elem => elem.title === params.subject)) {
+          subject = subject.sort(a => a.title === params.subject ? -1 : 1);
+          form.subject = subject[0].title;
+        }
+      }
       this.setProperties({
         subject,
-        types
+        types,
+        form
       });
     });
   }

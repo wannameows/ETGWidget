@@ -31,4 +31,19 @@ export default class ETGElement extends PolymerElement {
         .then(response => response.text().then(text => (text ? JSON.parse(text) : null)))
     };
   }
+
+  getLocationParams() {
+    let { search } = window.location;
+    let query = search.substring(search.indexOf('?') + 1).split('&');
+    if (Boolean(query[0])) {
+      let params = {};
+      query.map(param => {
+        let pair = param.split('=');
+        params[pair[0]] = decodeURIComponent(pair[1]);
+      });
+      return params;
+    } else {
+      return null;
+    }
+  }
 }
