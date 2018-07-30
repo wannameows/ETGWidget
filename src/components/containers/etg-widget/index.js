@@ -67,11 +67,11 @@ export default class ETGWidget extends ETGElement {
         }
         if (params.type && types.find(elem => elem.title === params.type)) {
           types = types.sort(a => a.title === params.type ? -1 : 1);
-          form.type = types[0].title;
+          form.type = types[0].id;
         }
         if (params.subject && subject.find(elem => elem.title === params.subject)) {
           subject = subject.sort(a => a.title === params.subject ? -1 : 1);
-          form.subject = subject[0].title;
+          form.subject = subject[0].id;
         }
       }
       this.setProperties({
@@ -83,8 +83,8 @@ export default class ETGWidget extends ETGElement {
   }
   generateTopics() {
     let { keywords, type, subject } = this.form;
-    subject = subject === 'All' ? '' : subject;
-    type = type === 'All' ? '' : type;
+    subject = subject === 0 ? '' : subject;
+    type = type === 0 ? '' : type;
     let query = `${keywords ? `?keywords=${keywords}` : ''}`;
     query += `${type ? `${query.length > 0 ? '&' : '?'}type=${type}` : ''}`;
     query += `${subject ? `${query.length > 0 ? '&' : '?'}subject=${subject}` : ''}`;
